@@ -10,21 +10,21 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE $FILE );
-$VERSION = '0.01';
-$DATE = '2003/07/04';
+$VERSION = '0.02';
+$DATE = '2003/07/05';
 $FILE = __FILE__;
 
 use vars qw(%INVENTORY);
 %INVENTORY = (
-    'lib/Docs/Site_SVD/DataPort_Maker.pm' => [qw(0.01 2003/07/04), 'new'],
-    'MANIFEST' => [qw(0.01 2003/07/04), 'generated new'],
-    'Makefile.PL' => [qw(0.01 2003/07/04), 'generated new'],
-    'README' => [qw(0.01 2003/07/04), 'generated new'],
-    'lib/DataPort/Maker.pm' => [qw(1.02 2003/07/04), 'new'],
-    't/DataPort/Maker.d' => [qw(0.01 2003/07/04), 'new'],
-    't/DataPort/Maker.pm' => [qw(0.01 2003/07/04), 'new'],
-    't/DataPort/Maker.t' => [qw(0.01 2003/07/04), 'new'],
-    't/DataPort/MakerDB.pm' => [qw(0.01 2003/07/04), 'new'],
+    'lib/Docs/Site_SVD/DataPort_Maker.pm' => [qw(0.02 2003/07/05), 'revised 0.01'],
+    'MANIFEST' => [qw(0.02 2003/07/05), 'generated, replaces 0.01'],
+    'Makefile.PL' => [qw(0.02 2003/07/05), 'generated, replaces 0.01'],
+    'README' => [qw(0.02 2003/07/05), 'generated, replaces 0.01'],
+    'lib/DataPort/Maker.pm' => [qw(1.03 2003/07/05), 'revised 1.02'],
+    't/DataPort/Maker.d' => [qw(0.01 2003/07/05), 'unchanged'],
+    't/DataPort/Maker.pm' => [qw(0.02 2003/07/05), 'revised 0.01'],
+    't/DataPort/Maker.t' => [qw(0.01 2003/07/05), 'unchanged'],
+    't/DataPort/MakerDB.pm' => [qw(0.01 2003/07/04), 'unchanged'],
 
 );
 
@@ -51,11 +51,11 @@ use vars qw(%INVENTORY);
 
  DataPort::FilteType::FormDB - Text Form Datatbase with advantages over CSV
 
- Revision: -
+ Revision: A
 
- Version: 0.01
+ Version: 0.02
 
- Date: 2003/07/04
+ Date: 2003/07/05
 
  Prepared for: General Public 
 
@@ -96,30 +96,9 @@ a database from the __DATA__ section of a program module that is in the
 L<DataPort::FileType::FormDB|DataPort::FileType::FormDB> format.
 This provides a more flexible alternative to the defines in a "makefile".
 
-The "DataPort::Maker" module is an integral part of the
-US DOD SDT2167A bundle of modules.
-The data used by Test::STDmaker and ExtUtils::SVDmaker are
-stored in this format.
-
-The dependency of the program modules in the US DOD STD2167A bundle is as follows:
- 
- File::FileUtil 
-   Test::STD::Scrub
-     Test::Tech
-        DataPort::FileType::FormDB DataPort::DataFile DataPort::Maker Test::STD::Template
-            Test::STDmaker ExtUtils::SVDmaker
-
-Note the 
-L<File::FileUtil|File::FileUtil>, 
-L<Test::STD::STDutil|Test::STD::STDutil> 
-L<Test::STD::Scrub|Test::STD::Scrub> 
-program modules breaks up 
-the Test::TestUtil program module
-and Test::TestUtil has disappeared.
-
 =head2 1.3 Document overview.
 
-This document releases DataPort::Maker version 0.01
+This document releases DataPort::Maker version 0.02
 providing description of the inventory, installation
 instructions and other information necessary to
 utilize and track this release.
@@ -135,8 +114,8 @@ system file specification.
 This document releases the file found
 at the following repository(s):
 
-   http://www.softwarediamonds/packages/DataPort-Maker-0.01
-   http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/DataPort-Maker-0.01
+   http://www.softwarediamonds/packages/DataPort-Maker-0.02
+   http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/DataPort-Maker-0.02
 
 
 Restrictions regarding duplication and license provisions
@@ -204,18 +183,29 @@ consists of the following files:
 
  file                                                         version date       comment
  ------------------------------------------------------------ ------- ---------- ------------------------
- lib/Docs/Site_SVD/DataPort_Maker.pm                          0.01    2003/07/04 new
- MANIFEST                                                     0.01    2003/07/04 generated new
- Makefile.PL                                                  0.01    2003/07/04 generated new
- README                                                       0.01    2003/07/04 generated new
- lib/DataPort/Maker.pm                                        1.02    2003/07/04 new
- t/DataPort/Maker.d                                           0.01    2003/07/04 new
- t/DataPort/Maker.pm                                          0.01    2003/07/04 new
- t/DataPort/Maker.t                                           0.01    2003/07/04 new
- t/DataPort/MakerDB.pm                                        0.01    2003/07/04 new
+ lib/Docs/Site_SVD/DataPort_Maker.pm                          0.02    2003/07/05 revised 0.01
+ MANIFEST                                                     0.02    2003/07/05 generated, replaces 0.01
+ Makefile.PL                                                  0.02    2003/07/05 generated, replaces 0.01
+ README                                                       0.02    2003/07/05 generated, replaces 0.01
+ lib/DataPort/Maker.pm                                        1.03    2003/07/05 revised 1.02
+ t/DataPort/Maker.d                                           0.01    2003/07/05 unchanged
+ t/DataPort/Maker.pm                                          0.02    2003/07/05 revised 0.01
+ t/DataPort/Maker.t                                           0.01    2003/07/05 unchanged
+ t/DataPort/MakerDB.pm                                        0.01    2003/07/04 unchanged
 
 
 =head2 3.3 Changes
+
+Changes are as follows:
+
+=over 4
+
+=item DataPort::Maker
+
+Adjust for the breakup of "Test::STD::STDutil" and
+movement of "Test::STD::Scrub" to "Text::Scrub"
+
+=back
 
 This release originates "DataPort::Maker".
 
@@ -259,8 +249,8 @@ Follow the instructions for the the chosen installation software.
 
 The distribution file is at the following respositories:
 
-   http://www.softwarediamonds/packages/DataPort-Maker-0.01
-   http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/DataPort-Maker-0.01
+   http://www.softwarediamonds/packages/DataPort-Maker-0.02
+   http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/DataPort-Maker-0.02
 
 
 =item Prerequistes.
@@ -271,7 +261,7 @@ The distribution file is at the following respositories:
  'File::Data' => '0',
  'Test::STD::Scrub' => '0',
  'Test::Tech' => '1.08',
- 'Test::STD::Scrub' => '1.07',
+ 'Text::Scrub' => '1.07',
  'DataPort::DataFile' => '0',
  'DataPort::FileType::FormDB' => '0',
 
@@ -369,11 +359,11 @@ __DATA__
 DISTNAME: DataPort-Maker^
 REPOSITORY_DIR: packages^
 
-VERSION : 0.01^
+VERSION : 0.02^
 FREEZE: 1^
-REVISION: -^
+REVISION: A^
 PREVIOUS_DISTNAME:  ^
-PREVIOUS_RELEASE:  ^
+PREVIOUS_RELEASE: 0.01^
 
 AUTHOR  : SoftwareDiamonds.com E<lt>support@SoftwareDiamonds.comE<gt>^
 
@@ -415,7 +405,7 @@ PREREQ_PM:
 'File::Data' => '0',
 'Test::STD::Scrub' => '0',
 'Test::Tech' => '1.08',
-'Test::STD::Scrub' => '1.07',
+'Text::Scrub' => '1.07',
 'DataPort::DataFile' => '0',
 'DataPort::FileType::FormDB' => '0',
 ^
@@ -423,7 +413,20 @@ PREREQ_PM:
 TESTS: t/DataPort/Maker.t ^
 EXE_FILES:  ^
 
-CHANGES: This release originates "DataPort::Maker".^
+CHANGES: 
+
+Changes are as follows:
+
+\=over 4
+
+\=item DataPort::Maker
+
+Adjust for the breakup of "Test::STD::STDutil" and
+movement of "Test::STD::Scrub" to "Text::Scrub"
+
+\=back
+
+This release originates "DataPort::Maker".^
 
 DOCUMENT_OVERVIEW:
 This document releases ${NAME} version ${VERSION}
@@ -450,26 +453,6 @@ a database from the __DATA__ section of a program module that is in the
 L<DataPort::FileType::FormDB|DataPort::FileType::FormDB> format.
 This provides a more flexible alternative to the defines in a "makefile".
 
-The "DataPort::Maker" module is an integral part of the
-US DOD SDT2167A bundle of modules.
-The data used by Test::STDmaker and ExtUtils::SVDmaker are
-stored in this format.
-
-The dependency of the program modules in the US DOD STD2167A bundle is as follows:
- 
- File::FileUtil 
-   Test::STD::Scrub
-     Test::Tech
-        DataPort::FileType::FormDB DataPort::DataFile DataPort::Maker Test::STD::Template
-            Test::STDmaker ExtUtils::SVDmaker
-
-Note the 
-L<File::FileUtil|File::FileUtil>, 
-L<Test::STD::STDutil|Test::STD::STDutil> 
-L<Test::STD::Scrub|Test::STD::Scrub> 
-program modules breaks up 
-the Test::TestUtil program module
-and Test::TestUtil has disappeared.
 ^
 
 LICENSE:

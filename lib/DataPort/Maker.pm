@@ -10,8 +10,8 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE);
-$VERSION = '1.02';
-$DATE = '2003/07/04';
+$VERSION = '1.03';
+$DATE = '2003/07/05';
 
 use File::Package;
 use File::Data;
@@ -51,12 +51,36 @@ sub make_pm
 
      $self->{options} = pop @targets if ref($targets[-1]) eq 'HASH';
 
+     ####################
+     # Fill in the options hash from the option PM. This is a NO CLOBBER
+     # operation in that if the options exists the optin PM will not 
+     # overwrite it
+     # 
+     my $options_pm = $self->{options}->{options_pm};
+     if ($options_pm) {
+
+         my @optionDB;
+         my $optionDB_record;
+         my $optionDB_file = $self->load_db($options_pm, \$optionDB_record, \@optionDB );
+         unless($optionDB_file) {
+             warn "Cannot load $optionDB_file\n";
+             return undef;
+         }
+          
+         my ($i, $option, $value);
+         for( $i=0; $i < @optionDB; $i += 2 ) {
+            ($option, $value) = @optionDB[$i, $i+1];
+            $self->{options}->{$option} = $value unless $self->{options}->{$option};
+         }
+
+     }
+
+     my @pm=();
      my $pm = $self->{options}->{pm};
  
      ###########
      # Gleam the list of program modules
      #
-     my @pm=();
      my $pm_ref = ref($pm);
      if ($pm_ref eq 'ARRAY') {
          @pm = @$pm;
@@ -66,10 +90,10 @@ sub make_pm
          return undef;
      }
      else {
-         @pm = split /(?: |,|;)+/, $pm;  # have list of outputs
+         @pm = split /(?: |,|;|\n)+/, $pm;  # have list of outputs
      }
      while (!$pm[0]) {shift @pm};
-
+    
      my $success = 1;
      foreach $pm (@pm) {
          $self->{options}->{pm} = $pm;    
@@ -95,7 +119,7 @@ sub make_targets
      my $formDB_pm = $self->{options}->{pm};
 
      ########
-     # Determine the SVD program module to load
+     # Determine the formDB program module to load
      #
      unless( $formDB_pm ) {
          warn "No formDB program module.\n";
@@ -108,63 +132,14 @@ sub make_targets
 
      unless($self->{FormDB_PM} && $self->{FormDB_PM} eq $formDB_pm) {
 
-         #######
-         # Add any extra directories to the include path
-         #
-         my @restore_inc = @INC; 
-         unshift @INC, @{$self->{Load_INC}} if( $self->{Load_INC} ); 
-
-         #####
-         # load the FormDB program module
-         #
-         # Always look in the current directory first
-         #
-         my $error;
-         unshift @INC, File::Spec->curdir();
-         if( $error = File::Package->load_package( $formDB_pm ) ) {
-             warn $error;
-             return undef;
-         }
-
-         ######
-         # Bring the FormDB into memory as @std_db
-         #
-         my ($formDB_file);
-         no strict;
-         $formDB_file = ${"${formDB_pm}::FILE"};
-         use strict;
-
-         unless( $formDB_file ) {
-             warn "No FILE variable in FormDB program module $formDB_pm.\n";
-             return undef;
-         }
-         $formDB_file =~ s=/=\\=g if $^O eq 'MSWin32';  # Microsoft thing
-
-         #######
-         # Load the FormDB after the __DATA__ token
-         #
-         my $fh = File::Data->pm2datah( $formDB_pm );
-         my $dbh = new DataPort::FileType::FormDB( file => $fh );
-         return undef unless( $dbh );
          my @formDB;
          my $formDB_record;
-         unless ($dbh->get(\@formDB, \$formDB_record)) {
-             unless( $formDB_record ) {
-                 warn( "Empty database for program module $formDB_pm.\n");
-             }
+         my $formDB_file = $self->load_db($formDB_pm, \$formDB_record, \@formDB );
+         unless($formDB_file) {
+             warn "Cannot load $formDB_file\n";
              return undef;
          }
-         return undef unless $dbh->encode_record( \$formDB_record );
-         $dbh->finish( );
-         @INC = @restore_inc;
-
-         ###### 
-         # Unescape any POD directives
-         #
-         for( my $i=1; $i < @formDB; $i += 2) {
-             $formDB[$i] =~ s/\n\\=/\n=/g;   
-         }
-
+          
          ######
          # Tuck the FormDB away in the $self object hash
          #
@@ -229,6 +204,72 @@ sub make_targets
      $success;
 
 }
+
+
+sub load_db
+{
+
+     my ($self, $formDB_pm, $formDB_record, $formDB_array ) = @_;
+
+     #######
+     # Add any extra directories to the include path
+     #
+     my @restore_inc = @INC; 
+     unshift @INC, @{$self->{Load_INC}} if( $self->{Load_INC} ); 
+
+     #####
+     # load the FormDB program module
+     #
+     # Always look in the current directory first
+     #
+     my $error;
+     unshift @INC, File::Spec->curdir();
+     if( $error = File::Package->load_package( $formDB_pm ) ) {
+         warn $error;
+         return undef;
+     }
+
+     ######
+     # Bring the FormDB into memory as @std_db
+     #
+     my ($formDB_file);
+     no strict;
+     $formDB_file = ${"${formDB_pm}::FILE"};
+     use strict;
+
+     unless( $formDB_file ) {
+         warn "No FILE variable in FormDB program module $formDB_pm.\n";
+         return undef;
+     }
+     $formDB_file =~ s=/=\\=g if $^O eq 'MSWin32';  # Microsoft thing
+
+     #######
+     # Load the FormDB after the __DATA__ token
+     #
+     my $fh = File::Data->pm2datah( $formDB_pm );
+     my $dbh = new DataPort::FileType::FormDB( file => $fh );
+     return undef unless( $dbh );
+     unless ($dbh->get($formDB_array, $formDB_record)) {
+         unless( $formDB_record ) {
+             warn( "Empty database for program module $formDB_pm.\n");
+         }
+         return undef;
+     }
+     return undef unless $dbh->encode_record( $formDB_record );
+     $dbh->finish( );
+     @INC = @restore_inc;
+
+     ###### 
+     # Unescape any POD directives
+     #
+     for( my $i=1; $i < @$formDB_array; $i += 2) {
+         ${$formDB_array}[$i] =~ s/\n\\=/\n=/g;   
+     }
+
+     return( $formDB_file );
+
+}
+
 
 1
 
@@ -302,7 +343,7 @@ follow on the next lines. For example,
 
  use vars qw($VERSION $DATE $FILE );
  $VERSION = '0.01';
- $DATE = '2003/06/07';
+ $DATE = '2003/07/04';
  $FILE = __FILE__;
 
  use DataPort::Maker;
