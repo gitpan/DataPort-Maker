@@ -23,7 +23,7 @@ my $tests = join ' ',unix2os('t/DataPort/Maker.t');
 WriteMakefile(
     NAME => 'DataPort::Maker',
     DISTNAME => 'DataPort-Maker',
-    VERSION  => '0.02',
+    VERSION  => '0.03',
     dist     => {COMPRESS => 'gzip',
                 'gz' => 'gz'},
     test     => {TESTS => $tests},
@@ -31,9 +31,8 @@ WriteMakefile(
                   'File::Package' => '0',
                   'File::TestPath' => '0',
                   'File::Data' => '0',
-                  'Test::STD::Scrub' => '0',
-                  'Test::Tech' => '1.08',
                   'Text::Scrub' => '1.07',
+                  'Test::Tech' => '1.08',
                   'DataPort::DataFile' => '0',
                   'DataPort::FileType::FormDB' => '0',},
     

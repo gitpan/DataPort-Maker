@@ -5,11 +5,11 @@ Title Page
 
      DataPort::FilteType::FormDB - Text Form Datatbase with advantages over CSV
 
-     Revision: A
+     Revision: B
 
-     Version: 0.02
+     Version: 0.03
 
-     Date: 2003/07/05
+     Date: 2003/07/10
 
      Prepared for: General Public 
 
@@ -49,7 +49,7 @@ Title Page
 
   1.3 Document overview.
 
-    This document releases DataPort::Maker version 0.02 providing
+    This document releases DataPort::Maker version 0.03 providing
     description of the inventory, installation instructions and other
     information necessary to utilize and track this release.
 
@@ -61,8 +61,8 @@ Title Page
 
     This document releases the file found at the following repository(s):
 
-       http://www.softwarediamonds/packages/DataPort-Maker-0.02
-       http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/DataPort-Maker-0.02
+       http://www.softwarediamonds/packages/DataPort-Maker-0.03
+       http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/DataPort-Maker-0.03
 
     Restrictions regarding duplication and license provisions are as
     follows:
@@ -107,25 +107,26 @@ Title Page
 
      file                                                         version date       comment
      ------------------------------------------------------------ ------- ---------- ------------------------
-     lib/Docs/Site_SVD/DataPort_Maker.pm                          0.02    2003/07/05 revised 0.01
-     MANIFEST                                                     0.02    2003/07/05 generated, replaces 0.01
-     Makefile.PL                                                  0.02    2003/07/05 generated, replaces 0.01
-     README                                                       0.02    2003/07/05 generated, replaces 0.01
-     lib/DataPort/Maker.pm                                        1.03    2003/07/05 revised 1.02
-     t/DataPort/Maker.d                                           0.01    2003/07/05 unchanged
-     t/DataPort/Maker.pm                                          0.02    2003/07/05 revised 0.01
-     t/DataPort/Maker.t                                           0.01    2003/07/05 unchanged
+     lib/Docs/Site_SVD/DataPort_Maker.pm                          0.03    2003/07/10 revised 0.02
+     MANIFEST                                                     0.03    2003/07/10 generated, replaces 0.02
+     Makefile.PL                                                  0.03    2003/07/10 generated, replaces 0.02
+     README                                                       0.03    2003/07/10 generated, replaces 0.02
+     lib/DataPort/Maker.pm                                        1.03    2003/07/05 unchanged
+     t/DataPort/Maker.d                                           0.01    2003/07/07 unchanged
+     t/DataPort/Maker.pm                                          0.01    2003/06/07 unchanged
+     t/DataPort/Maker.t                                           0.01    2003/07/07 unchanged
      t/DataPort/MakerDB.pm                                        0.01    2003/07/04 unchanged
 
   3.3 Changes
 
     Changes are as follows:
 
-    DataPort::Maker
+    DataPort::Maker 0.02
         Adjust for the breakup of "Test::STD::STDutil" and movement of
         "Test::STD::Scrub" to "Text::Scrub"
 
-    This release originates "DataPort::Maker".
+    DataPort::Maker 0.03
+        Did not get everything in the last change.
 
   3.4 Adaptation data.
 
@@ -163,17 +164,16 @@ Title Page
 
         The distribution file is at the following respositories:
 
-           http://www.softwarediamonds/packages/DataPort-Maker-0.02
-           http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/DataPort-Maker-0.02
+           http://www.softwarediamonds/packages/DataPort-Maker-0.03
+           http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/DataPort-Maker-0.03
 
     Prerequistes.
          'File::SmartNL' => '0',
          'File::Package' => '0',
          'File::TestPath' => '0',
          'File::Data' => '0',
-         'Test::STD::Scrub' => '0',
-         'Test::Tech' => '1.08',
          'Text::Scrub' => '1.07',
+         'Test::Tech' => '1.08',
          'DataPort::DataFile' => '0',
          'DataPort::FileType::FormDB' => '0',
 

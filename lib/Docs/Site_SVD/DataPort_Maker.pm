@@ -10,20 +10,20 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE $FILE );
-$VERSION = '0.02';
-$DATE = '2003/07/05';
+$VERSION = '0.03';
+$DATE = '2003/07/10';
 $FILE = __FILE__;
 
 use vars qw(%INVENTORY);
 %INVENTORY = (
-    'lib/Docs/Site_SVD/DataPort_Maker.pm' => [qw(0.02 2003/07/05), 'revised 0.01'],
-    'MANIFEST' => [qw(0.02 2003/07/05), 'generated, replaces 0.01'],
-    'Makefile.PL' => [qw(0.02 2003/07/05), 'generated, replaces 0.01'],
-    'README' => [qw(0.02 2003/07/05), 'generated, replaces 0.01'],
-    'lib/DataPort/Maker.pm' => [qw(1.03 2003/07/05), 'revised 1.02'],
-    't/DataPort/Maker.d' => [qw(0.01 2003/07/05), 'unchanged'],
-    't/DataPort/Maker.pm' => [qw(0.02 2003/07/05), 'revised 0.01'],
-    't/DataPort/Maker.t' => [qw(0.01 2003/07/05), 'unchanged'],
+    'lib/Docs/Site_SVD/DataPort_Maker.pm' => [qw(0.03 2003/07/10), 'revised 0.02'],
+    'MANIFEST' => [qw(0.03 2003/07/10), 'generated, replaces 0.02'],
+    'Makefile.PL' => [qw(0.03 2003/07/10), 'generated, replaces 0.02'],
+    'README' => [qw(0.03 2003/07/10), 'generated, replaces 0.02'],
+    'lib/DataPort/Maker.pm' => [qw(1.03 2003/07/05), 'unchanged'],
+    't/DataPort/Maker.d' => [qw(0.01 2003/07/07), 'unchanged'],
+    't/DataPort/Maker.pm' => [qw(0.01 2003/06/07), 'unchanged'],
+    't/DataPort/Maker.t' => [qw(0.01 2003/07/07), 'unchanged'],
     't/DataPort/MakerDB.pm' => [qw(0.01 2003/07/04), 'unchanged'],
 
 );
@@ -51,11 +51,11 @@ use vars qw(%INVENTORY);
 
  DataPort::FilteType::FormDB - Text Form Datatbase with advantages over CSV
 
- Revision: A
+ Revision: B
 
- Version: 0.02
+ Version: 0.03
 
- Date: 2003/07/05
+ Date: 2003/07/10
 
  Prepared for: General Public 
 
@@ -98,7 +98,7 @@ This provides a more flexible alternative to the defines in a "makefile".
 
 =head2 1.3 Document overview.
 
-This document releases DataPort::Maker version 0.02
+This document releases DataPort::Maker version 0.03
 providing description of the inventory, installation
 instructions and other information necessary to
 utilize and track this release.
@@ -114,8 +114,8 @@ system file specification.
 This document releases the file found
 at the following repository(s):
 
-   http://www.softwarediamonds/packages/DataPort-Maker-0.02
-   http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/DataPort-Maker-0.02
+   http://www.softwarediamonds/packages/DataPort-Maker-0.03
+   http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/DataPort-Maker-0.03
 
 
 Restrictions regarding duplication and license provisions
@@ -183,14 +183,14 @@ consists of the following files:
 
  file                                                         version date       comment
  ------------------------------------------------------------ ------- ---------- ------------------------
- lib/Docs/Site_SVD/DataPort_Maker.pm                          0.02    2003/07/05 revised 0.01
- MANIFEST                                                     0.02    2003/07/05 generated, replaces 0.01
- Makefile.PL                                                  0.02    2003/07/05 generated, replaces 0.01
- README                                                       0.02    2003/07/05 generated, replaces 0.01
- lib/DataPort/Maker.pm                                        1.03    2003/07/05 revised 1.02
- t/DataPort/Maker.d                                           0.01    2003/07/05 unchanged
- t/DataPort/Maker.pm                                          0.02    2003/07/05 revised 0.01
- t/DataPort/Maker.t                                           0.01    2003/07/05 unchanged
+ lib/Docs/Site_SVD/DataPort_Maker.pm                          0.03    2003/07/10 revised 0.02
+ MANIFEST                                                     0.03    2003/07/10 generated, replaces 0.02
+ Makefile.PL                                                  0.03    2003/07/10 generated, replaces 0.02
+ README                                                       0.03    2003/07/10 generated, replaces 0.02
+ lib/DataPort/Maker.pm                                        1.03    2003/07/05 unchanged
+ t/DataPort/Maker.d                                           0.01    2003/07/07 unchanged
+ t/DataPort/Maker.pm                                          0.01    2003/06/07 unchanged
+ t/DataPort/Maker.t                                           0.01    2003/07/07 unchanged
  t/DataPort/MakerDB.pm                                        0.01    2003/07/04 unchanged
 
 
@@ -200,14 +200,16 @@ Changes are as follows:
 
 =over 4
 
-=item DataPort::Maker
+=item DataPort::Maker 0.02
 
 Adjust for the breakup of "Test::STD::STDutil" and
 movement of "Test::STD::Scrub" to "Text::Scrub"
 
-=back
+=item DataPort::Maker 0.03
 
-This release originates "DataPort::Maker".
+Did not get everything in the last change.
+
+=back
 
 =head2 3.4 Adaptation data.
 
@@ -249,8 +251,8 @@ Follow the instructions for the the chosen installation software.
 
 The distribution file is at the following respositories:
 
-   http://www.softwarediamonds/packages/DataPort-Maker-0.02
-   http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/DataPort-Maker-0.02
+   http://www.softwarediamonds/packages/DataPort-Maker-0.03
+   http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/DataPort-Maker-0.03
 
 
 =item Prerequistes.
@@ -259,9 +261,8 @@ The distribution file is at the following respositories:
  'File::Package' => '0',
  'File::TestPath' => '0',
  'File::Data' => '0',
- 'Test::STD::Scrub' => '0',
- 'Test::Tech' => '1.08',
  'Text::Scrub' => '1.07',
+ 'Test::Tech' => '1.08',
  'DataPort::DataFile' => '0',
  'DataPort::FileType::FormDB' => '0',
 
@@ -359,11 +360,11 @@ __DATA__
 DISTNAME: DataPort-Maker^
 REPOSITORY_DIR: packages^
 
-VERSION : 0.02^
+VERSION : 0.03^
 FREEZE: 1^
-REVISION: A^
 PREVIOUS_DISTNAME:  ^
-PREVIOUS_RELEASE: 0.01^
+PREVIOUS_RELEASE: 0.02^
+REVISION: B^
 
 AUTHOR  : SoftwareDiamonds.com E<lt>support@SoftwareDiamonds.comE<gt>^
 
@@ -403,9 +404,8 @@ PREREQ_PM:
 'File::Package' => '0',
 'File::TestPath' => '0',
 'File::Data' => '0',
-'Test::STD::Scrub' => '0',
-'Test::Tech' => '1.08',
 'Text::Scrub' => '1.07',
+'Test::Tech' => '1.08',
 'DataPort::DataFile' => '0',
 'DataPort::FileType::FormDB' => '0',
 ^
@@ -419,14 +419,18 @@ Changes are as follows:
 
 \=over 4
 
-\=item DataPort::Maker
+\=item DataPort::Maker 0.02
 
 Adjust for the breakup of "Test::STD::STDutil" and
 movement of "Test::STD::Scrub" to "Text::Scrub"
 
-\=back
+\=item DataPort::Maker 0.03
 
-This release originates "DataPort::Maker".^
+Did not get everything in the last change.
+
+\=back
+^
+
 
 DOCUMENT_OVERVIEW:
 This document releases ${NAME} version ${VERSION}
