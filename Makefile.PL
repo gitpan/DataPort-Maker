@@ -23,25 +23,20 @@ my $tests = join ' ',unix2os('t/DataPort/Maker.t');
 WriteMakefile(
     NAME => 'DataPort::Maker',
     DISTNAME => 'DataPort-Maker',
-    VERSION  => '0.03',
+    VERSION  => '0.05',
     dist     => {COMPRESS => 'gzip',
                 'gz' => 'gz'},
     test     => {TESTS => $tests},
-    PREREQ_PM => {'File::SmartNL' => '0',
-                  'File::Package' => '0',
-                  'File::TestPath' => '0',
-                  'File::Data' => '0',
-                  'Text::Scrub' => '1.07',
-                  'Test::Tech' => '1.08',
-                  'DataPort::DataFile' => '0',
-                  'DataPort::FileType::FormDB' => '0',},
+    PREREQ_PM => {'File::Maker' => '0.01',
+                  'File::Package' => '1.16',
+                  'Tie::Form' => '0.01',
+                  'Tie::Layers' => '0.02',
+                  'Data::Startup' => '0.02',},
     
 
     ($] >= 5.005 ?     
         (AUTHOR    => 'SoftwareDiamonds.com E<lt>support@SoftwareDiamonds.comE<gt>',
-        ABSTRACT  => 'Text Form Datatbase with advantages over CSV that has text separation
-sequences with very simple escapes so the separation sequences never
-appear in the data.', ) : ()),
+        ABSTRACT  => 'Obsolete. Superceded by File::Maker. Mimics a make by loading a database and calling targets methods', ) : ()),
 );
 
 

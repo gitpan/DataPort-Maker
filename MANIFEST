@@ -6,4 +6,9 @@ lib/DataPort/Maker.pm
 t/DataPort/Maker.d
 t/DataPort/Maker.pm
 t/DataPort/Maker.t
-t/DataPort/MakerDB.pm
+t/DataPort/_Maker_/MakerDB.pm
+t/DataPort/File/SmartNL.pm
+t/DataPort/Test/Tech.pm
+t/DataPort/Data/Secs2.pm
+t/DataPort/Data/SecsPack.pm
+t/DataPort/Data/Startup.pm

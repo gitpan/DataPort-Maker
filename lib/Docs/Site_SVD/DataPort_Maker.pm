@@ -10,21 +10,26 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE $FILE );
-$VERSION = '0.03';
-$DATE = '2003/07/10';
+$VERSION = '0.05';
+$DATE = '2004/05/10';
 $FILE = __FILE__;
 
 use vars qw(%INVENTORY);
 %INVENTORY = (
-    'lib/Docs/Site_SVD/DataPort_Maker.pm' => [qw(0.03 2003/07/10), 'revised 0.02'],
-    'MANIFEST' => [qw(0.03 2003/07/10), 'generated, replaces 0.02'],
-    'Makefile.PL' => [qw(0.03 2003/07/10), 'generated, replaces 0.02'],
-    'README' => [qw(0.03 2003/07/10), 'generated, replaces 0.02'],
-    'lib/DataPort/Maker.pm' => [qw(1.03 2003/07/05), 'unchanged'],
-    't/DataPort/Maker.d' => [qw(0.01 2003/07/07), 'unchanged'],
-    't/DataPort/Maker.pm' => [qw(0.01 2003/06/07), 'unchanged'],
-    't/DataPort/Maker.t' => [qw(0.01 2003/07/07), 'unchanged'],
-    't/DataPort/MakerDB.pm' => [qw(0.01 2003/07/04), 'unchanged'],
+    'lib/Docs/Site_SVD/DataPort_Maker.pm' => [qw(0.05 2004/05/10), 'revised 0.04'],
+    'MANIFEST' => [qw(0.05 2004/05/10), 'generated, replaces 0.04'],
+    'Makefile.PL' => [qw(0.05 2004/05/10), 'generated, replaces 0.04'],
+    'README' => [qw(0.05 2004/05/10), 'generated, replaces 0.04'],
+    'lib/DataPort/Maker.pm' => [qw(1.06 2004/05/10), 'revised 1.05'],
+    't/DataPort/Maker.d' => [qw(0.03 2004/05/10), 'revised 0.02'],
+    't/DataPort/Maker.pm' => [qw(0.03 2004/05/10), 'revised 0.02'],
+    't/DataPort/Maker.t' => [qw(0.03 2004/05/10), 'revised 0.02'],
+    't/DataPort/_Maker_/MakerDB.pm' => [qw(0.01 2004/05/10), 'new'],
+    't/DataPort/File/SmartNL.pm' => [qw(1.14 2004/05/10), 'new'],
+    't/DataPort/Test/Tech.pm' => [qw(1.22 2004/05/10), 'new'],
+    't/DataPort/Data/Secs2.pm' => [qw(1.2 2004/05/10), 'new'],
+    't/DataPort/Data/SecsPack.pm' => [qw(0.05 2004/05/10), 'new'],
+    't/DataPort/Data/Startup.pm' => [qw(0.04 2004/05/10), 'new'],
 
 );
 
@@ -49,13 +54,13 @@ use vars qw(%INVENTORY);
 
  for
 
- DataPort::FilteType::FormDB - Text Form Datatbase with advantages over CSV
+ DataPort::Maker - Obsolete. Superceded by File::Maker. Mimics a make by loading a database and calling targets methods
 
- Revision: B
+ Revision: D
 
- Version: 0.03
+ Version: 0.05
 
- Date: 2003/07/10
+ Date: 2004/05/10
 
  Prepared for: General Public 
 
@@ -98,7 +103,7 @@ This provides a more flexible alternative to the defines in a "makefile".
 
 =head2 1.3 Document overview.
 
-This document releases DataPort::Maker version 0.03
+This document releases DataPort::Maker version 0.05
 providing description of the inventory, installation
 instructions and other information necessary to
 utilize and track this release.
@@ -111,12 +116,14 @@ system file specification.
 
 =head2 3.1 Inventory of materials released.
 
-This document releases the file found
-at the following repository(s):
+This document releases the file 
 
-   http://www.softwarediamonds/packages/DataPort-Maker-0.03
-   http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/DataPort-Maker-0.03
+ DataPort-Maker-0.05.tar.gz
 
+found at the following repository(s):
+
+  http://www.softwarediamonds/packages/
+  http://www.perl.com/CPAN/authors/id/S/SO/SOFTDIA/
 
 Restrictions regarding duplication and license provisions
 are as follows:
@@ -183,15 +190,20 @@ consists of the following files:
 
  file                                                         version date       comment
  ------------------------------------------------------------ ------- ---------- ------------------------
- lib/Docs/Site_SVD/DataPort_Maker.pm                          0.03    2003/07/10 revised 0.02
- MANIFEST                                                     0.03    2003/07/10 generated, replaces 0.02
- Makefile.PL                                                  0.03    2003/07/10 generated, replaces 0.02
- README                                                       0.03    2003/07/10 generated, replaces 0.02
- lib/DataPort/Maker.pm                                        1.03    2003/07/05 unchanged
- t/DataPort/Maker.d                                           0.01    2003/07/07 unchanged
- t/DataPort/Maker.pm                                          0.01    2003/06/07 unchanged
- t/DataPort/Maker.t                                           0.01    2003/07/07 unchanged
- t/DataPort/MakerDB.pm                                        0.01    2003/07/04 unchanged
+ lib/Docs/Site_SVD/DataPort_Maker.pm                          0.05    2004/05/10 revised 0.04
+ MANIFEST                                                     0.05    2004/05/10 generated, replaces 0.04
+ Makefile.PL                                                  0.05    2004/05/10 generated, replaces 0.04
+ README                                                       0.05    2004/05/10 generated, replaces 0.04
+ lib/DataPort/Maker.pm                                        1.06    2004/05/10 revised 1.05
+ t/DataPort/Maker.d                                           0.03    2004/05/10 revised 0.02
+ t/DataPort/Maker.pm                                          0.03    2004/05/10 revised 0.02
+ t/DataPort/Maker.t                                           0.03    2004/05/10 revised 0.02
+ t/DataPort/_Maker_/MakerDB.pm                                0.01    2004/05/10 new
+ t/DataPort/File/SmartNL.pm                                   1.14    2004/05/10 new
+ t/DataPort/Test/Tech.pm                                      1.22    2004/05/10 new
+ t/DataPort/Data/Secs2.pm                                     1.2     2004/05/10 new
+ t/DataPort/Data/SecsPack.pm                                  0.05    2004/05/10 new
+ t/DataPort/Data/Startup.pm                                   0.04    2004/05/10 new
 
 
 =head2 3.3 Changes
@@ -199,6 +211,10 @@ consists of the following files:
 Changes are as follows:
 
 =over 4
+
+=item DataPort::Maker 0.01
+
+Originated
 
 =item DataPort::Maker 0.02
 
@@ -209,21 +225,39 @@ movement of "Test::STD::Scrub" to "Text::Scrub"
 
 Did not get everything in the last change.
 
+=item DataPort::Maker 0.04
+
+Fixed some things because added new common functions to DataPort::DataFile
+
+Made some error messages more descriptive
+
+Added lastest version for all PREREQ_PM field
+
+Change the test so that test support program modules resides in distribution
+directory tlib directory instead of the lib directory. 
+Because they are no longer in the lib directory, 
+test support files will not be installed as a pre-condition for the 
+test of this module.
+The test of this module will precede immediately.
+The test support files in the tlib directory will vanish after
+the installtion.
+
+=item DataPort::Maker 0.05
+
+The lastest build of Test::STDmaker expects the test library in the same
+directory as the test script.
+Coordiated with the lastest Test::STDmaker by moving the
+test library from tlib to t/DataPort, the same directory as the test script
+and deleting the test library File::TestPath program module.
+
+Obsolete. Superceded by C<File::Maker>.
+
 =back
 
 =head2 3.4 Adaptation data.
 
 This installation requires that the installation site
 has the Perl programming language installed.
-Installation sites running Microsoft Operating systems require
-the installation of Unix utilities. 
-An excellent, highly recommended Unix utilities for Microsoft
-operating systems is unxutils by Karl M. Syring.
-A copy is available at the following web sites:
-
- http://unxutils.sourceforge.net
- http://packages.SoftwareDiamnds.com
-
 There are no other additional requirements or tailoring needed of 
 configurations files, adaptation data or other software needed for this
 installation particular to any installation site.
@@ -242,29 +276,44 @@ and installation support are as follows:
 
 =item Installation Instructions.
 
-To installed the release file, use the CPAN module in the Perl release
+To installed the release file, use the CPAN module
+pr PPM module in the Perl release
 or the INSTALL.PL script at the following web site:
 
  http://packages.SoftwareDiamonds.com
 
 Follow the instructions for the the chosen installation software.
 
-The distribution file is at the following respositories:
+If all else fails, the file may be manually installed.
+Enter one of the following repositories in a web browser:
 
-   http://www.softwarediamonds/packages/DataPort-Maker-0.03
-   http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/DataPort-Maker-0.03
+  http://www.softwarediamonds/packages/
+  http://www.perl.com/CPAN/authors/id/S/SO/SOFTDIA/
 
+Right click on 'DataPort-Maker-0.05.tar.gz' and download to a temporary
+installation directory.
+Enter the following where $make is 'nmake' for microsoft
+windows; otherwise 'make'.
+
+ gunzip DataPort-Maker-0.05.tar.gz
+ tar -xf DataPort-Maker-0.05.tar
+ perl Makefile.PL
+ $make test
+ $make install
+
+On Microsoft operating system, nmake, tar, and gunzip 
+must be in the exeuction path. If tar and gunzip are
+not install, download and install unxutils from
+
+ http://packages.softwarediamonds.com
 
 =item Prerequistes.
 
- 'File::SmartNL' => '0',
- 'File::Package' => '0',
- 'File::TestPath' => '0',
- 'File::Data' => '0',
- 'Text::Scrub' => '1.07',
- 'Test::Tech' => '1.08',
- 'DataPort::DataFile' => '0',
- 'DataPort::FileType::FormDB' => '0',
+ 'File::Maker' => '0.01',
+ 'File::Package' => '1.16',
+ 'Tie::Form' => '0.01',
+ 'Tie::Layers' => '0.02',
+ 'Data::Startup' => '0.02',
 
 
 =item Security, privacy, or safety precautions.
@@ -333,23 +382,14 @@ United States
 
 =head1 2.0 SEE ALSO
 
- L<DataPort::Maker|DataPort::Maker>
+=over 4
+
+=item L<File::Maker|File::Maker>
+
+=back
 
 =for html
-<hr>
-<p><br>
-<!-- BLK ID="PROJECT_MANAGEMENT" -->
-<!-- /BLK -->
-<p><br>
-<!-- BLK ID="NOTICE" -->
-<!-- /BLK -->
-<p><br>
-<!-- BLK ID="OPT-IN" -->
-<!-- /BLK -->
-<p><br>
-<!-- BLK ID="LOG_CGI" -->
-<!-- /BLK -->
-<p><br>
+
 
 =cut
 
@@ -360,21 +400,17 @@ __DATA__
 DISTNAME: DataPort-Maker^
 REPOSITORY_DIR: packages^
 
-VERSION : 0.03^
+VERSION : 0.05^
 FREEZE: 1^
 PREVIOUS_DISTNAME:  ^
-PREVIOUS_RELEASE: 0.02^
-REVISION: B^
+PREVIOUS_RELEASE: 0.04^
+REVISION: D^
 
 AUTHOR  : SoftwareDiamonds.com E<lt>support@SoftwareDiamonds.comE<gt>^
 
-ABSTRACT: 
-Text Form Datatbase with advantages over CSV that has text separation
-sequences with very simple escapes so the separation sequences never
-appear in the data.
-^
+ABSTRACT: Obsolete. Superceded by File::Maker. Mimics a make by loading a database and calling targets methods^
 
-TITLE   : DataPort::FilteType::FormDB - Text Form Datatbase with advantages over CSV^
+TITLE   : DataPort::Maker - Obsolete. Superceded by File::Maker. Mimics a make by loading a database and calling targets methods^
 END_USER: General Public^
 COPYRIGHT: copyright © 2003 Software Diamonds^
 CLASSIFICATION: NONE^
@@ -387,7 +423,7 @@ COMPRESS_SUFFIX: gz^
 
 REPOSITORY: 
   http://www.softwarediamonds/packages/
-  http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/
+  http://www.perl.com/CPAN/authors/id/S/SO/SOFTDIA/
 ^
 
 RESTRUCTURE:  ^
@@ -397,19 +433,23 @@ CHANGE2CURRENT:  ^
 AUTO_REVISE:
 lib/DataPort/Maker.pm
 t/DataPort/Maker*
+t/DataPort/_Maker_/*
+lib/File/SmartNL.pm => t/DataPort/File/SmartNL.pm
+lib/Test/Tech.pm => t/DataPort/Test/Tech.pm
+lib/Data/Secs2.pm => t/DataPort/Data/Secs2.pm
+lib/Data/SecsPack.pm => t/DataPort/Data/SecsPack.pm
+lib/Data/Startup.pm => t/DataPort/Data/Startup.pm
 ^
 
 PREREQ_PM: 
-'File::SmartNL' => '0',
-'File::Package' => '0',
-'File::TestPath' => '0',
-'File::Data' => '0',
-'Text::Scrub' => '1.07',
-'Test::Tech' => '1.08',
-'DataPort::DataFile' => '0',
-'DataPort::FileType::FormDB' => '0',
+'File::Maker' => '0.01',
+'File::Package' => '1.16',
+'Tie::Form' => '0.01',
+'Tie::Layers' => '0.02',
+'Data::Startup' => '0.02',
 ^
 
+README_PODS: lib/DataPort/Maker.pm^
 TESTS: t/DataPort/Maker.t ^
 EXE_FILES:  ^
 
@@ -418,6 +458,10 @@ CHANGES:
 Changes are as follows:
 
 \=over 4
+
+\=item DataPort::Maker 0.01
+
+Originated
 
 \=item DataPort::Maker 0.02
 
@@ -428,7 +472,35 @@ movement of "Test::STD::Scrub" to "Text::Scrub"
 
 Did not get everything in the last change.
 
+\=item DataPort::Maker 0.04
+
+Fixed some things because added new common functions to DataPort::DataFile
+
+Made some error messages more descriptive
+
+Added lastest version for all PREREQ_PM field
+
+Change the test so that test support program modules resides in distribution
+directory tlib directory instead of the lib directory. 
+Because they are no longer in the lib directory, 
+test support files will not be installed as a pre-condition for the 
+test of this module.
+The test of this module will precede immediately.
+The test support files in the tlib directory will vanish after
+the installtion.
+
+\=item DataPort::Maker 0.05
+
+The lastest build of Test::STDmaker expects the test library in the same
+directory as the test script.
+Coordiated with the lastest Test::STDmaker by moving the
+test library from tlib to t/DataPort, the same directory as the test script
+and deleting the test library File::TestPath program module.
+
+Obsolete. Superceded by C<File::Maker>.
+
 \=back
+
 ^
 
 
@@ -504,16 +576,38 @@ ANY WAY OUT OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 INSTALLATION:
-To installed the release file, use the CPAN module in the Perl release
+To installed the release file, use the CPAN module
+pr PPM module in the Perl release
 or the INSTALL.PL script at the following web site:
 
  http://packages.SoftwareDiamonds.com
 
 Follow the instructions for the the chosen installation software.
 
-The distribution file is at the following respositories:
+If all else fails, the file may be manually installed.
+Enter one of the following repositories in a web browser:
 
 ${REPOSITORY}
+
+Right click on '${DIST_FILE}' and download to a temporary
+installation directory.
+Enter the following where $make is 'nmake' for microsoft
+windows; otherwise 'make'.
+
+ gunzip ${BASE_DIST_FILE}.tar.${COMPRESS_SUFFIX}
+ tar -xf ${BASE_DIST_FILE}.tar
+ perl Makefile.PL
+ $make test
+ $make install
+
+On Microsoft operating system, nmake, tar, and gunzip 
+must be in the exeuction path. If tar and gunzip are
+not install, download and install unxutils from
+
+ http://packages.softwarediamonds.com
+^
+
+SUPPORT: 603 882-0846 E<lt>support@SoftwareDiamonds.comE<gt>
 ^
 
 
@@ -567,28 +661,37 @@ United States
 
 SEE_ALSO:
 
- L<DataPort::Maker|DataPort::Maker>
+\=over 4
 
+\=item L<File::Maker|File::Maker>
 
+\=back
 
 ^
 
-HTML:
-<hr>
-<p><br>
-<!-- BLK ID="PROJECT_MANAGEMENT" -->
-<!-- /BLK -->
-<p><br>
-<!-- BLK ID="NOTICE" -->
-<!-- /BLK -->
-<p><br>
-<!-- BLK ID="OPT-IN" -->
-<!-- /BLK -->
-<p><br>
-<!-- BLK ID="LOG_CGI" -->
-<!-- /BLK -->
-<p><br>
-^
+HTML: ^
+
+
 ~-~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

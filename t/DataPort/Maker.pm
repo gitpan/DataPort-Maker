@@ -10,8 +10,8 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE $FILE );
-$VERSION = '0.02';
-$DATE = '2003/07/05';
+$VERSION = '0.03';
+$DATE = '2004/05/10';
 $FILE = __FILE__;
 
 ########
@@ -40,7 +40,7 @@ $FILE = __FILE__;
 
  Version: 
 
- Date: 2003/07/05
+ Date: 2004/05/10
 
  Prepared for: General Public 
 
@@ -94,7 +94,7 @@ L<STD FormDB Test Description Fields|Test::STDmaker/STD FormDB Test Description 
  ^
  VO: ^
   N: UUT not loaded^
-  A: $loaded = $fp->is_package_loaded('t::DataPort::MakerDB')^
+  A: $loaded = $fp->is_package_loaded('_Maker_::MakerDB')^
   E:  ''^
  ok: 1^
 
@@ -102,7 +102,7 @@ L<STD FormDB Test Description Fields|Test::STDmaker/STD FormDB Test Description 
 
   N: Load UUT^
   S: $loaded^
-  C: my $errors = $fp->load_package( 't::DataPort::MakerDB' )^
+  C: my $errors = $fp->load_package( '_Maker_::MakerDB' )^
   A: $errors^
  SE: ''^
  ok: 2^
@@ -111,7 +111,7 @@ L<STD FormDB Test Description Fields|Test::STDmaker/STD FormDB Test Description 
 
  DO: ^
   A: $snl->fin('MakerDB.pm')^
-  C: my $maker = new t::DataPort::MakerDB( pm => 't::DataPort::MakerDB' )^
+  C: my $maker = new _Maker_::MakerDB( pm => '_Maker_::MakerDB' )^
   A: $maker->make( )^
   N: No target^
   E: ' target1  target2 '^
@@ -293,20 +293,20 @@ Verify: Maker.t^
 
 VO: ^
  N: UUT not loaded^
- A: $loaded = $fp->is_package_loaded('t::DataPort::MakerDB')^
+ A: $loaded = $fp->is_package_loaded('_Maker_::MakerDB')^
  E:  ''^
 ok: 1^
 
  N: Load UUT^
  S: $loaded^
- C: my $errors = $fp->load_package( 't::DataPort::MakerDB' )^
+ C: my $errors = $fp->load_package( '_Maker_::MakerDB' )^
  A: $errors^
 SE: ''^
 ok: 2^
 
 DO: ^
  A: $snl->fin('MakerDB.pm')^
- C: my $maker = new t::DataPort::MakerDB( pm => 't::DataPort::MakerDB' )^
+ C: my $maker = new _Maker_::MakerDB( pm => '_Maker_::MakerDB' )^
  A: $maker->make( )^
  N: No target^
  E: ' target1  target2 '^
